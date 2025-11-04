@@ -1,6 +1,5 @@
 import React from 'react';
 import { CtaForm, CtaFormProps } from './CtaForm';
-import { LoopIcon } from './Icons';
 
 export const Hero: React.FC<CtaFormProps> = (props) => {
   return (
@@ -16,12 +15,18 @@ export const Hero: React.FC<CtaFormProps> = (props) => {
           <div className="mt-10 max-w-lg mx-auto">
              <CtaForm {...props} />
           </div>
-          <div className="mt-16 flex justify-center opacity-30">
-            <div className="w-32 h-32 text-slate-400">
-              <LoopIcon />
+          
+          <div className="mt-20">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-8">Hero's journey</h2>
+            <div className="relative h-0 pb-[56.25%] max-w-3xl mx-auto bg-slate-200 rounded-lg shadow-lg overflow-hidden">
+                <iframe 
+                    src="https://docs.google.com/presentation/d/1d6I5m3gbDHwMi92Mv0aorH59X7cAUG9PJZRsbZXHnlA/embed?start=false&loop=false&delayms=3000" 
+                    frameBorder="0" 
+                    allowFullScreen={true}
+                    className="absolute top-0 left-0 w-full h-full"
+                ></iframe>
             </div>
           </div>
-          <p className="mt-4 text-sm text-slate-500 font-semibold uppercase tracking-wider">The Loop of Accountability</p>
         </div>
       </div>
     </section>
