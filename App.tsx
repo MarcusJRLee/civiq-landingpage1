@@ -5,9 +5,11 @@ import { Features } from './components/Features';
 import { HowItWorks } from './components/HowItWorks';
 import { Values } from './components/Values';
 import { Footer } from './components/Footer';
+import type { CtaFormProps } from './components/CtaForm';
 
 const App: React.FC = () => {
   const [email, setEmail] = useState<string>('');
+  const [zip, setZip] = useState<string>('');
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
@@ -16,9 +18,19 @@ const App: React.FC = () => {
     if (error) setError('');
   };
 
+  const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setZip(e.target.value);
+    if (error) setError('');
+  };
+
   const validateEmail = (email: string): boolean => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
+  };
+
+  const validateZip = (zip: string): boolean => {
+    const re = /^\d{5}$/;
+    return re.test(zip);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,20 +43,34 @@ const App: React.FC = () => {
       setError('Please enter a valid email address.');
       return;
     }
-    console.log('Early access signup:', email);
+    if (!zip) {
+      setError('Zip code is required.');
+      return;
+    }
+    if (!validateZip(zip)) {
+      setError('Please enter a valid 5-digit zip code.');
+      return;
+    }
+    console.log('Early access signup:', { email, zip });
     setSubmitted(true);
     setError('');
   };
+
+  const formProps: Omit<CtaFormProps, 'onSubmit'> = {
+    email,
+    zip,
+    submitted,
+    error,
+    onEmailChange: handleEmailChange,
+    onZipChange: handleZipChange,
+  }
 
   return (
     <div className="min-h-screen overflow-x-hidden">
       <Header />
       <main>
         <Hero 
-          email={email} 
-          submitted={submitted}
-          error={error}
-          onEmailChange={handleEmailChange} 
+          {...formProps}
           onSubmit={handleSubmit}
         />
         <Features />
@@ -52,10 +78,7 @@ const App: React.FC = () => {
         <Values />
       </main>
       <Footer 
-        email={email}
-        submitted={submitted}
-        error={error}
-        onEmailChange={handleEmailChange}
+        {...formProps}
         onSubmit={handleSubmit}
       />
     </div>

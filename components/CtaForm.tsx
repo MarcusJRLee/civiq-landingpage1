@@ -2,13 +2,15 @@ import React from 'react';
 
 export interface CtaFormProps {
   email: string;
+  zip: string;
   submitted: boolean;
   error: string;
   onEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onZipChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const CtaForm: React.FC<CtaFormProps> = ({ email, submitted, error, onEmailChange, onSubmit }) => {
+export const CtaForm: React.FC<CtaFormProps> = ({ email, zip, submitted, error, onEmailChange, onZipChange, onSubmit }) => {
   if (submitted) {
     return (
       <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md shadow-lg text-center" role="alert">
@@ -26,13 +28,24 @@ export const CtaForm: React.FC<CtaFormProps> = ({ email, submitted, error, onEma
           name="email"
           value={email}
           onChange={onEmailChange}
-          placeholder="Enter your email address"
-          className="flex-grow w-full px-4 py-3 text-lg text-slate-900 bg-white border border-slate-300 rounded-md focus:ring-2 focus:ring-brand-purple focus:border-brand-purple outline-none transition duration-150 ease-in-out"
+          placeholder="Email address"
+          className="flex-grow w-full px-4 py-2.5 text-base text-slate-900 bg-white border border-slate-300 rounded-md focus:ring-2 focus:ring-brand-purple focus:border-brand-purple outline-none transition duration-150 ease-in-out"
           aria-label="Email address for early access"
+        />
+        <input
+          type="text"
+          name="zip"
+          pattern="\d*"
+          value={zip}
+          onChange={onZipChange}
+          placeholder="Zip Code"
+          maxLength={5}
+          className="w-full sm:w-28 px-4 py-2.5 text-base text-slate-900 bg-white border border-slate-300 rounded-md focus:ring-2 focus:ring-brand-purple focus:border-brand-purple outline-none transition duration-150 ease-in-out"
+          aria-label="Zip code"
         />
         <button
           type="submit"
-          className="px-6 py-3 text-lg font-semibold text-white bg-brand-purple rounded-md shadow-sm hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-purple transition-colors"
+          className="px-6 py-2.5 text-base font-semibold text-white bg-brand-purple rounded-md shadow-sm hover:bg-brand-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-purple transition-colors whitespace-nowrap"
         >
           Get Early Access
         </button>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { CtaForm, CtaFormProps } from './CtaForm';
+import { CtaForm } from './CtaForm';
+import type { CtaFormProps } from './CtaForm';
 
 export const Footer: React.FC<CtaFormProps> = (props) => {
   return (
@@ -10,7 +11,7 @@ export const Footer: React.FC<CtaFormProps> = (props) => {
           <p className="mt-4 text-lg text-slate-300">
             Don't just watch politics happen. Be a part of the solution. Sign up for early access and help us build a better democracy.
           </p>
-          <div className="mt-10 max-w-lg mx-auto">
+          <div className="mt-10 max-w-2xl mx-auto">
             <CtaForm {...props} />
           </div>
         </div>
