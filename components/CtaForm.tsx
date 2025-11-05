@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export interface CtaFormProps {
   email: string;
@@ -10,21 +10,10 @@ export interface CtaFormProps {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const CtaForm: React.FC<CtaFormProps> = ({
-  email,
-  zip,
-  submitted,
-  error,
-  onEmailChange,
-  onZipChange,
-  onSubmit,
-}) => {
+export const CtaForm: React.FC<CtaFormProps> = ({ email, zip, submitted, error, onEmailChange, onZipChange, onSubmit }) => {
   if (submitted) {
     return (
-      <div
-        className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md shadow-lg text-center"
-        role="alert"
-      >
+      <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md shadow-lg text-center" role="alert">
         <p className="font-bold">Thank you for your interest!</p>
         <p>We've received your submission. We'll be in touch soon.</p>
       </div>
