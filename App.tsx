@@ -7,6 +7,7 @@ import { Values } from "./components/Values";
 import { Footer } from "./components/Footer";
 import type { CtaFormProps } from "./components/CtaForm";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const App: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -77,6 +78,7 @@ const App: React.FC = () => {
       </main>
       <Footer {...formProps} onSubmit={handleSubmit} />
       <SpeedInsights />
+      <Analytics />
     </div>
   );
 };
