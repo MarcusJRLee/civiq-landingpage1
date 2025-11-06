@@ -6,7 +6,7 @@ import { HowItWorks } from "./components/HowItWorks";
 import { Values } from "./components/Values";
 import { Footer } from "./components/Footer";
 import type { CtaFormProps } from "./components/CtaForm";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App: React.FC = () => {
   const [email, setEmail] = useState<string>("");
