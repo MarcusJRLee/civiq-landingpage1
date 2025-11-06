@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CivIQ - Modernizing Democracy</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,24 +11,24 @@
         theme: {
           extend: {
             colors: {
-              'brand-purple': '#6D28D9',
-              'brand-light': '#F3E8FF',
-              'brand-dark': '#3730A3',
+              "brand-purple": "#6D28D9",
+              "brand-light": "#F3E8FF",
+              "brand-dark": "#3730A3",
             },
-          }
+          },
+        },
+      };
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/"
         }
       }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
-  }
-}
-</script>
-</head>
+  </head>
   <body class="bg-slate-50 text-slate-800">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
