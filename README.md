@@ -14,6 +14,10 @@
 ./test-docker.sh
 ```
 
+```bash
+npx tsx backend/server.ts
+```
+
 ## Tips
 
 #### `react-pdf`

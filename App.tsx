@@ -8,6 +8,31 @@ import { Footer } from "./components/Footer";
 import type { CtaFormProps } from "./components/CtaForm";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import type { SignUpData } from "./types/sign_up_data";
+
+function validateZip(zip: string): boolean {
+  const re = /^\d{5}$/;
+  return re.test(zip);
+}
+
+function validateEmail(email: string): boolean {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+}
+
+async function sendSignupPayload(payload: SignUpData): Promise<Response> {
+  try {
+    console.log("Early access signup:", payload);
+    return await fetch("/api/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: payload }),
+    });
+  } catch (reason: unknown) {
+    console.log(reason);
+    return Promise.reject(reason);
+  }
+}
 
 const App: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -25,17 +50,7 @@ const App: React.FC = () => {
     if (error) setError("");
   };
 
-  const validateEmail = (email: string): boolean => {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  };
-
-  const validateZip = (zip: string): boolean => {
-    const re = /^\d{5}$/;
-    return re.test(zip);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
       setError("Email address is required.");
@@ -53,7 +68,17 @@ const App: React.FC = () => {
       setError("Please enter a valid 5-digit zip code.");
       return;
     }
-    console.log("Early access signup:", { email, zip });
+
+    // Send the SignUpData to the backend.
+    const payload: SignUpData = { email, zip, timestamp: Date.now() };
+    const res = await sendSignupPayload(payload);
+    if (res instanceof Response && !res.ok) {
+      const err = await res.json();
+      setError(err.error || "Something went wrong");
+    } else if (res instanceof Error) {
+      setError(res.message);
+    }
+
     setSubmitted(true);
     setError("");
   };
