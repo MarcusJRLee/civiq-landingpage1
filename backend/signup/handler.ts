@@ -21,19 +21,20 @@ export async function signUpHandler(
     }
 
     // Send email to YOU with the signup info
-    await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL!,
-      to: process.env.RESEND_TO_EMAIL!,
-      subject: `CivIQ Sign Up: ${data.email}`,
-      html: `
-        <h2>New Signup!</h2>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>ZIP:</strong> ${data.zip}</p>
-        <p><strong>Timestamp:</strong> ${new Date(
-          data.timestamp
-        ).toLocaleString()}</p>
-      `,
-    });
+    // await resend.emails.send({
+    //   from: process.env.RESEND_FROM_EMAIL!,
+    //   to: process.env.RESEND_TO_EMAIL!,
+    //   subject: `CivIQ Sign Up: ${data.email}`,
+    //   html: `
+    //     <h2>New Signup!</h2>
+    //     <p><strong>Email:</strong> ${data.email}</p>
+    //     <p><strong>ZIP:</strong> ${data.zip}</p>
+    //     <p><strong>Timestamp:</strong> ${new Date(
+    //       data.timestamp
+    //     ).toLocaleString()}</p>
+    //   `,
+    // });
+    console.log(`TODO(mjrlee): Sending: ${JSON.stringify(data)}`);
 
     res.json({ success: true });
   } catch (reason: unknown) {
