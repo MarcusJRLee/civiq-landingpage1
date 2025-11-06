@@ -1,13 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/drive/1P4IWVeQWVFeMBxfu9kgyYH1r1SSB3HVo
-
 ## Run Locally
 
 **Prerequisites:** Node.js
@@ -20,6 +10,31 @@ View your app in AI Studio: https://ai.studio/apps/drive/1P4IWVeQWVFeMBxfu9kgyYH
 
 ## Run Locally Using Docker
 
-```
+```bash
 ./test-docker.sh
 ```
+
+## Tips
+
+#### `react-pdf`
+
+If you see something like this:
+
+> Failed to load PDF: The API version "5.4.296" does not match the Worker version "5.4.394".
+
+Then you need to uninstall `pdfjs-dist` and install the version that matches `react-pdf`, in this case `5.4.296`. You would use these commands:
+
+```bash
+npm uninstall pdfjs-dist
+
+npm install pdfjs-dist@5.4.296
+```
+
+# Legacy: Run and deploy your AI Studio app
+
+> Note: This no longer works as it doesn't pull directly from GitHub and I have
+> made edits.
+
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/drive/1P4IWVeQWVFeMBxfu9kgyYH1r1SSB3HVo

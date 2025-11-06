@@ -26,14 +26,17 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Create nginx configuration template
 RUN echo 'server { \
-    listen $PORT; \
-    server_name _; \
-    root /usr/share/nginx/html; \
-    index index.html; \
-    location / { \
-        try_files $uri $uri/ /index.html; \
-    } \
+  listen $PORT; \
+  server_name _; \
+  root /usr/share/nginx/html; \
+  index index.html; \
+  location / { \
+    try_files $uri $uri/ /index.html; \
+  } \
 }' > /etc/nginx/conf.d/default.conf.template
+
+# Copy the custom nginx config.
+COPY nginx_custom.conf /etc/nginx/conf.d/nginx_custom.conf
 
 # Create startup script to substitute PORT env var
 COPY docker-entrypoint.sh /docker-entrypoint.sh
