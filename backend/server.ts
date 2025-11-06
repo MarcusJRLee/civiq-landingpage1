@@ -7,7 +7,7 @@ import { signUpHandler } from "./signup/handler";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 3001;
+const PORT = process.env.BACKEND_PORT ? parseInt(process.env.BACKEND_PORT, 10) : 3001;
 
 app.use(cors()); // Allow requests from your Vite dev server[](http://localhost:5173)
 app.use(express.json());
