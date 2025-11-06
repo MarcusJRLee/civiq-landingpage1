@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies (use npm install for Alpine to handle optional deps correctly)
+RUN npm install
 
 # Copy source files
 COPY . .
