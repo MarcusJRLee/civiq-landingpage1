@@ -66,7 +66,7 @@ export const PDFViewer: React.FC<PDFViewerProps> = ({ pdfUrl }) => {
   const progress = numPages > 1 ? ((pageNumber - 1) / (numPages - 1)) * 100 : 0;
 
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden rounded-xl">
       {error ? (
         <div className="p-8 text-center text-red-500">{error}</div>
       ) : (
