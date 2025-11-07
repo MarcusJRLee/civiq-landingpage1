@@ -6,8 +6,8 @@ import { HowItWorks } from "./components/HowItWorks";
 import { Values } from "./components/Values";
 import { Footer } from "./components/Footer";
 import type { CtaFormProps } from "./components/CtaForm";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import type { SignUpData } from "./types/sign_up_data";
 
 function validateZip(zip: string): boolean {

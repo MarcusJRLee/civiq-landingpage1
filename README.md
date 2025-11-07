@@ -11,11 +11,17 @@
 ## Run Locally Using Docker
 
 ```bash
+# Test the frontend in Docker.
 ./test-docker.sh
-```
 
-```bash
+# Run the React app locally.
+npm run dev
+
+# Run the backend server locally.
 npx tsx backend/server.ts
+
+# Complile all the TypeScript.
+npx tsc
 ```
 
 ## Tips
